@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative Brief Submission</title>
+    <style>
+        :root {
+            --bg-color: #0f1115;
+            --surface-color: #1a1d24;
+            --text-main: #ffffff;
+            --text-muted: #8b92a5;
+            --accent-color: #3b82f6;
+            --accent-hover: #2563eb;
+            --border-color: #333a4a;
+            --error-color: #ef4444;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: var(--surface-color);
+            padding: 40px;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 600px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            border: 1px solid var(--border-color);
+        }
+
+        h1 {
+            margin-top: 0;
+            margin-bottom: 8px;
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        p.subtitle {
+            color: var(--text-muted);
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .optional {
+            text-transform: none;
+            color: #555c6e;
+            font-size: 12px;
+            letter-spacing: 0;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="url"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            color: var(--text-main);
+            font-size: 15px;
+            box-sizing: border-box;
+            transition: border-color 0.2s ease;
+        }
+
+        input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            background-color: var(--bg-color);
+            border: 1px dashed var(--border-color);
+            border-radius: 6px;
+            color: var(--text-muted);
+            cursor: pointer;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: var(--accent-hover);
+        }
+
+        button:disabled {
+            background-color: #555c6e;
+            cursor: not-allowed;
+        }
+
+        /* Thank you page styling */
+        #thankYouPage {
+            display: none;
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        .success-icon {
+            font-size: 64px;
+            color: #10b981;
+            margin-bottom: 20px;
+        }
+
+        .error-message {
+            color: var(--error-color);
+            font-size: 14px;
+            margin-top: 10px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Main Form Container -->
+    <div class="container" id="formContainer">
+        <h1>Creative Brief Intake</h1>
+        <p class="subtitle">Submit your project details to initiate the AI Creative Director.</p>
+
+        <form id="creativeForm">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required placeholder="your@email.com">
+            </div>
+
+            <div class="form-group">
+                <label for="clientName">Client Name</label>
+                <input type="text" id="clientName" name="clientName" required placeholder="Brand or Company Name">
+            </div>
+
+            <div class="form-group">
+                <label for="projectName">Project Name</label>
+                <input type="text" id="projectName" name="projectName" required placeholder="E.g., Summer Campaign 2026">
+            </div>
+
+            <div class="form-group">
+                <label for="projectType">Project Type</label>
+                <select id="projectType" name="projectType" required>
+                    <option value="" disabled selected>Select a type...</option>
+                    <option value="GRAPHIC">Graphic</option>
+                    <option value="VIDEO">Video</option>
+                    <option value="CAMPAIGN">Campaign</option>
+                    <option value="SOCIAL">Social</option>
+                    <option value="OTHER">Other</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="objective">Objective</label>
+                <textarea id="objective" name="objective" required placeholder="What is the primary goal of this project?"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="targetAudience">Target Audience</label>
+                <textarea id="targetAudience" name="targetAudience" required placeholder="Who are we trying to reach?"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="deliverables">Deliverables</label>
+                <textarea id="deliverables" name="deliverables" required placeholder="What exactly needs to be produced? (e.g., 3x 15s IG Reels, 1x Poster)"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="timeline">Timeline</label>
+                <input type="text" id="timeline" name="timeline" required placeholder="E.g., Final delivery by Oct 15th">
+            </div>
+
+            <div class="form-group">
+                <label for="budget">Budget <span class="optional">(Optional)</span></label>
+                <input type="text" id="budget" name="budget" placeholder="E.g., $15,000">
+            </div>
+
+            <div class="form-group">
+                <label for="referenceLinks">Reference Links <span class="optional">(Optional)</span></label>
+                <input type="text" id="referenceLinks" name="referenceLinks" placeholder="Links to inspiration, current assets, etc.">
+            </div>
+
+            <div class="form-group">
+                <label for="fileUpload">File Uploads <span class="optional">(Optional - Images, PDFs, Moodboards)</span></label>
+                <!-- accept attribute helps limit file types, 'multiple' allows selecting multiple files -->
+                <input type="file" id="fileUpload" name="fileUpload" accept="image/*,.pdf" multiple>
+            </div>
+
+            <div id="errorMessage" class="error-message">Something went wrong. Please check your connection and try again.</div>
+
+            <button type="submit" id="submitBtn">Submit Brief</button>
+        </form>
+    </div>
+
+    <!-- Thank You Page Container -->
+    <div class="container" id="thankYouPage">
+        <div class="success-icon">✓</div>
+        <h1>Brief Received!</h1>
+        <p class="subtitle">Our AI Creative Director is analyzing your brief now.</p>
+        <p style="color: var(--text-muted); font-size: 15px; line-height: 1.5;">
+            You will receive a structured Creative Blueprint via email shortly.<br>
+            Please check your inbox (and spam folder) in the next few minutes.
+        </p>
+        <button onclick="window.location.reload()" style="margin-top: 30px; background-color: transparent; border: 1px solid var(--border-color); color: var(--text-main);">Submit Another Brief</button>
+    </div>
+
+    <script>
+        // REPLACE THIS WITH YOUR ACTUAL N8N WEBHOOK URL
+        const N8N_WEBHOOK_URL = "https://your-n8n-instance.com/webhook/creative-brief-intake";
+
+        const form = document.getElementById('creativeForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const formContainer = document.getElementById('formContainer');
+        const thankYouPage = document.getElementById('thankYouPage');
+        const errorMessage = document.getElementById('errorMessage');
+
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault(); // Prevents the default page reload
+
+            // UI: Show loading state
+            submitBtn.disabled = true;
+            submitBtn.innerText = "Analyzing Brief... Please wait";
+            errorMessage.style.display = 'none';
+
+            // Gather all form data, including files
+            const formData = new FormData(form);
+
+            try {
+                // Send the POST request to n8n
+                const response = await fetch(N8N_WEBHOOK_URL, {
+                    method: 'POST',
+                    body: formData // Fetch API automatically sets the correct Content-Type for multipart/form-data
+                });
+
+                if (response.ok) {
+                    // Success! Hide form, show Thank You page
+                    formContainer.style.display = 'none';
+                    thankYouPage.style.display = 'block';
+                } else {
+                    // Server responded with an error (e.g. 500)
+                    throw new Error("Server error");
+                }
+            } catch (error) {
+                // Network error or fetch failed
+                console.error("Submission failed:", error);
+                errorMessage.style.display = 'block';
+                submitBtn.disabled = false;
+                submitBtn.innerText = "Submit Brief";
+            }
+        });
+    </script>
+</body>
+</html>
